@@ -1,8 +1,0 @@
-{
-  "name": "learning-graphql-ts",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "git@github.com:danimal141/learning-graphql-ts.git",
-  "author": "danimal141 <hideaki.ishii1204@gmail.com>",
-  "license": "MIT"
-}
