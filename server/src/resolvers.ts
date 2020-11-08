@@ -1,7 +1,8 @@
 import { ulid } from 'ulid'
+import { DateTimeResolver as DateTime } from 'graphql-scalars'
 import {
-  MutationResolvers,
   Photo,
+  MutationResolvers,
   QueryResolvers,
   PhotoResolvers,
   Resolvers
@@ -18,6 +19,7 @@ const Mutation: MutationResolvers = {
   postPhoto(_parent, args) {
     const newPhoto = {
       id: ulid(),
+      created: new Date(),
       ...args.input
     }
     photos.push(newPhoto)
@@ -33,6 +35,7 @@ const resolvers: Resolvers = {
   Query,
   Mutation,
   Photo,
+  DateTime,
 }
 
 export default resolvers

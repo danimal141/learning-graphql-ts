@@ -13,6 +13,7 @@
   "dependencies": {
     "apollo-server": "^2.19.0",
     "graphql": "^15.4.0",
+    "graphql-scalars": "^1.4.1",
     "ulid": "^2.3.0"
   },
   "devDependencies": {

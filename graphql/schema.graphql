@@ -1,3 +1,5 @@
+scalar DateTime
+
 enum PhotoCategory {
   SELFIE
   PORTRAIT
@@ -12,6 +14,7 @@ type Photo {
   url: String
   description: String
   category: PhotoCategory
+  created: DateTime
 }
 
 type Query {
