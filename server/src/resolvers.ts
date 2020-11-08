@@ -1,3 +1,4 @@
+import { ulid } from 'ulid'
 import {
   MutationResolvers,
   Photo,
@@ -6,7 +7,6 @@ import {
   Resolvers
 } from '../gen/graphql-resolver-types'
 
-let _id = 0
 let photos: Photo[] = []
 
 const Query: QueryResolvers =  {
@@ -15,10 +15,10 @@ const Query: QueryResolvers =  {
 }
 
 const Mutation: MutationResolvers = {
-  postPhoto(_: any, args: Photo) {
-    let newPhoto = {
-      id: _id++,
-      ...args
+  postPhoto(_parent, args) {
+    const newPhoto = {
+      id: ulid(),
+      ...args.input
     }
     photos.push(newPhoto)
     return newPhoto
@@ -26,7 +26,7 @@ const Mutation: MutationResolvers = {
 }
 
 const Photo: PhotoResolvers = {
-  url: root => `http://example.com/img/${root.id}.jpg`
+  url: (parent) => `http://example.com/img/${parent.id}.jpg`
 }
 
 const resolvers: Resolvers = {

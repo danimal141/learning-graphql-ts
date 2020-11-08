@@ -4,5 +4,6 @@ query {
     name
     url
     description
+    category
   }
 }
