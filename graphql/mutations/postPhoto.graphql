@@ -1,5 +1,8 @@
 mutation postPhoto($name: String!, $description: String) {
   postPhoto(name: $name, description: $description) {
     id
+    name
+    url
+    description
   }
 }
