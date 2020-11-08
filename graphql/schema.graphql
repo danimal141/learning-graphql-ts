@@ -1,0 +1,14 @@
+type Query {
+  totalPhotos: Int!
+}
+
+type Mutation {
+  postPhoto(name: String! description: String): Photo
+}
+
+type Photo {
+  id: ID!
+  url: String!
+  name: String!
+  description: String
+}

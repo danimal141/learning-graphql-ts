@@ -1,0 +1,6 @@
+node_modules
+**/gen/
+.cache
+dist
+*.log
+graphql/schema.json
