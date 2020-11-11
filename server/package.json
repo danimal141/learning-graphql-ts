@@ -11,6 +11,8 @@
     "build": "tsc"
   },
   "dependencies": {
+    "apollo-server-express": "^2.19.0",
+    "express": "^4.17.1",
     "graphql": "^15.4.0",
     "graphql-scalars": "^1.4.1",
     "ulid": "^2.3.0"
