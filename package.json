@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "run-p dev:server dev:codegen",
-    "dev:server": "cd server && yarn dev",
+    "dev:server": "yarn workspace server dev",
     "dev:codegen": "graphql-codegen --config codegen.yml -w",
     "codegen": "graphql-codegen --config codegen.yml"
   },
