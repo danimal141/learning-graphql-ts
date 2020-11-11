@@ -1,4 +1,5 @@
 import { ApolloServer } from 'apollo-server-express'
+import expressPlayground from 'graphql-playground-middleware-express'
 import express from 'express'
 import fs from 'fs'
 import path from 'path'
@@ -10,6 +11,8 @@ const server = new ApolloServer({
   typeDefs,
   resolvers
 })
+server.applyMiddleware({ app })
 
 app.get('/', (_req, res) => res.end('Welcome!'))
+app.get('/playground', expressPlayground({ endpoint: server.graphqlPath }))
 app.listen({ port: 4000 }, () => console.log(`Server running @ localhost:4000${server.graphqlPath}`))
