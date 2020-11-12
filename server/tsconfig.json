@@ -1,16 +1,17 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "declaration": false,
-    "lib": ["es6", "dom"],
+    "lib": [
+      "es5",
+      "es6"
+    ],
+    "target": "es5",
     "module": "commonjs",
-    "target": "esnext",
     "moduleResolution": "node",
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "esModuleInterop": true
+    "outDir": "./build",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true
   },
   "include": [
     "src/**/*"

@@ -17,4 +17,6 @@ $ yarn codegen
 
 // run all
 $ yarn dev
+$ open localhost:4000/playground
 ```
+
