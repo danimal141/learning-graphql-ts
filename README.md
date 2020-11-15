@@ -8,6 +8,7 @@ Different from [the original](https://github.com/MoonHighway/learning-graphql), 
 ```
 // setup
 $ yarn
+$ docker-compose up
 
 // server
 $ yarn dev:server
@@ -16,7 +17,6 @@ $ yarn dev:server
 $ yarn codegen
 
 // run all
-$ yarn dev
-$ open localhost:4000/playground
+$ yarn dev // Then you can open http://localhost:4000/playground
 ```
 
