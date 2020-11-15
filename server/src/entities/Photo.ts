@@ -32,7 +32,7 @@ export default class Photo extends BaseEntity {
   @Field()
   public category: PhotoCategory
 
-  @CreateDateColumn({ type: "timestamp" })
+  @CreateDateColumn({ type: 'timestamp' })
   @Field()
   public readonly createdAt: Date
 }

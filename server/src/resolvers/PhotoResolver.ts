@@ -21,7 +21,7 @@ export default class PhotoResolver {
   }
 
   @Mutation(_returns => Photo)
-  async createPhoto(@Arg("photo") input: PostPhotoInput, @Ctx() _ctx: Context) {
+  async createPhoto(@Arg('photo') input: PostPhotoInput, @Ctx() _ctx: Context) {
     const photo = Photo.create(input)
     return await photo.save()
   }
