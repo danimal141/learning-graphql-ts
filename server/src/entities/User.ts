@@ -1,18 +1,33 @@
-import {Entity, PrimaryGeneratedColumn, Column} from 'typeorm'
+import {
+  Entity, PrimaryGeneratedColumn, BaseEntity, Column,
+  CreateDateColumn, OneToMany, ManyToMany
+} from 'typeorm'
+import { ObjectType, Field, ID } from 'type-graphql'
+import Photo from './Photo'
 
 @Entity()
-export class User {
+@ObjectType()
+export default class User extends BaseEntity {
+  @PrimaryGeneratedColumn()
+  @Field(_type => ID)
+  public readonly githubLogin: string;
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @Column()
+  @Field()
+  public name: string
 
-    @Column()
-    firstName: string;
+  @Column()
+  public avator: string;
 
-    @Column()
-    lastName: string;
+  @CreateDateColumn({ type: 'timestamp' })
+  @Field()
+  public readonly createdAt: Date
 
-    @Column()
-    age: number;
+  @OneToMany(_type => Photo, photo => photo.postedBy)
+  @Field(_type => [Photo])
+  postedPhotos: Photo[]
 
+  @ManyToMany(_type => Photo, photo => photo.taggedUsers)
+  @Field(_type => [Photo])
+  inPhotos: Photo[]
 }

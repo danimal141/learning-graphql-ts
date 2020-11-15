@@ -1,5 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, BaseEntity, Column, CreateDateColumn } from 'typeorm'
+import {
+  Entity, PrimaryGeneratedColumn, BaseEntity, Column, CreateDateColumn,
+  ManyToOne, ManyToMany
+} from 'typeorm'
 import { ObjectType, Field, ID } from 'type-graphql'
+import User from './User'
 
 export enum PhotoCategory {
   Selfie = 'SELFIE',
@@ -35,4 +39,13 @@ export default class Photo extends BaseEntity {
   @CreateDateColumn({ type: 'timestamp' })
   @Field()
   public readonly createdAt: Date
+
+  @ManyToOne(_type => User, user => user.postedPhotos)
+  @Field(_type => User)
+  public postedBy: User
+
+
+  @ManyToMany(_type => User, user => user.inPhotos)
+  @Field(_type => [User])
+  public taggedUsers: User[]
 }

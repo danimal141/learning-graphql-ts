@@ -1,7 +1,9 @@
 import Photo from './entities/Photo'
+import User from './entities/User'
 
 const entities = [
-  Photo
+  Photo,
+  User
 ]
 
 export default entities
