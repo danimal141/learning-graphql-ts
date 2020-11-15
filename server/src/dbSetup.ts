@@ -14,9 +14,9 @@ const dbSetup = async () => {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     entities: entities,
-    synchronize: true, // Using `synchronize` in Production is dangerous!
+    synchronize: false, // Using `synchronize` in Production is dangerous!
     logging: true,
-    dropSchema: true,
+    dropSchema: false,
     cache: true,
   })
   BaseEntity.useConnection(conn)
