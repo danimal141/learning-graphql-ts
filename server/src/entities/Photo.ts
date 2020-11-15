@@ -44,7 +44,6 @@ export default class Photo extends BaseEntity {
   @Field(_type => User)
   public postedBy: User
 
-
   @ManyToMany(_type => User, user => user.inPhotos)
   @Field(_type => [User])
   public taggedUsers: User[]
