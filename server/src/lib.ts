@@ -32,13 +32,13 @@ export interface GitHubError {
   documentation_url: string
 }
 
-const isError = <T extends object>(result: T | GitHubError): result is GitHubError => {
+const isError = (result: GitHubUserResponse | GitHubError): result is GitHubError => {
   console.log('isError------------')
   console.log(result)
   return (result as GitHubError).message != null
 }
 
-const isAuthError = <T extends object>(result: T | GitHubAuthError): result is GitHubAuthError => {
+const isAuthError = (result: GitHubAuthResponse | GitHubAuthError): result is GitHubAuthError => {
   console.log('isAuthError------------')
   console.log(result)
   return (result as GitHubAuthError).error != null
@@ -55,7 +55,7 @@ const requestGitHubToken = async (credentials: GitHubCredentials): Promise<GitHu
   }
   const resp = await fetch(GITHUB_AUTH_URL, requestParams)
   const result =  await resp.json()
-  if (isAuthError<GitHubAuthResponse>(result)) {
+  if (isAuthError(result)) {
     throw new Error(JSON.stringify(result))
   } else {
     return result
@@ -73,7 +73,7 @@ const requestGitHubUser = async (token: string): Promise<GitHubUserResponse> => 
   }
   const resp = await fetch(GITHUB_USER_ACCOUNT_URL, requestParams)
   const result = await resp.json()
-  if (isError<GitHubUserResponse>(result)) {
+  if (isError(result)) {
     throw new Error(JSON.stringify(result))
   } else {
     return result
