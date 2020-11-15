@@ -10,12 +10,6 @@ Different from [the original](https://github.com/MoonHighway/learning-graphql), 
 $ yarn
 $ docker-compose up
 
-// server
-$ yarn dev:server
-
-// codegen
-$ yarn codegen
-
 // run all
 $ yarn dev // Then you can open http://localhost:4000/playground
 ```
