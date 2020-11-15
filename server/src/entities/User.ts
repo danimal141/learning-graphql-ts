@@ -1,5 +1,5 @@
 import {
-  Entity, PrimaryGeneratedColumn, BaseEntity, Column,
+  Entity, PrimaryColumn, BaseEntity, Column,
   CreateDateColumn, OneToMany, ManyToMany
 } from 'typeorm'
 import { ObjectType, Field, ID } from 'type-graphql'
@@ -8,16 +8,17 @@ import Photo from './Photo'
 @Entity()
 @ObjectType()
 export default class User extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   @Field(_type => ID)
-  public readonly githubLogin: string;
+  public githubLogin: string
 
   @Column()
   @Field()
   public name: string
 
   @Column()
-  public avator: string;
+  @Field()
+  public avatar: string
 
   @CreateDateColumn({ type: 'timestamp' })
   @Field()

@@ -10,8 +10,8 @@
     "dev": "nodemon -e js,ts,json",
     "build": "tsc",
     "start": "ts-node src/index.ts",
-    "lint": "eslint src/ --ext .ts",
-    "lint:fix": "eslint src/ --ext .ts --fix"
+    "lint": "eslint src/ -c '../.eslintrc.js' --ext .ts",
+    "lint:fix": "eslint src/ -c '../.eslintrc.js' --ext .ts --fix"
   },
   "dependencies": {
     "apollo-server-express": "^2.19.0",
