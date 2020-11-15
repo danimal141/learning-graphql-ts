@@ -1,11 +1,11 @@
 import path from 'path'
 import dotenv from 'dotenv'
 import { createConnection, BaseEntity } from 'typeorm'
-import { User } from './entity/User'
+import entities from './entities'
 
 dotenv.config({ path: path.join(__dirname, '../../.env') })
 
-const ensureConnection = async () => {
+const dbSetup = async () => {
   const conn = await createConnection({
     type: 'mysql',
     host: 'localhost',
@@ -13,11 +13,14 @@ const ensureConnection = async () => {
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    entities: [User],
-    synchronize: false,
+    entities: entities,
+    synchronize: true, // Using `synchronize` in Production is dangerous!
     logging: true,
+    dropSchema: true,
+    cache: true,
   })
   BaseEntity.useConnection(conn)
+  return conn
 }
 
-export default async () => { ensureConnection() }
+export default dbSetup
