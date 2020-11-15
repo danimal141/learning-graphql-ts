@@ -13,7 +13,7 @@ import resolvers from './resolvers'
   const app = express()
   const schema = await buildSchema({
     resolvers: resolvers,
-    emitSchemaFile: path.resolve(__dirname, 'schema.gql')
+    emitSchemaFile: path.resolve(__dirname, '../schema.gql')
   })
   const context = { db: await dbSetup() }
   const server = new ApolloServer({ schema, context })

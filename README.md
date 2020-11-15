@@ -11,6 +11,6 @@ $ yarn
 $ docker-compose up
 
 // run all
-$ yarn dev // Then you can open http://localhost:4000/playground
+$ yarn dev // Then you can open `http://localhost:4000/playground` and `server/schema.gql` would be automatically generated
 ```
 
