@@ -1,10 +1,15 @@
-import { Resolver, Query, Int, Arg, Ctx, Mutation } from 'type-graphql'
+import { Resolver, Query, Int, Arg, Ctx, Mutation, FieldResolver, Root } from 'type-graphql'
 import { Context } from 'apollo-server-core'
 import Photo from '../entities/Photo'
 import PostPhotoInput from './types/PostPhotoInput'
 
 @Resolver(Photo)
 export default class PhotoResolver {
+  @FieldResolver()
+  url(@Root() photo: Photo) {
+    return `http://example.com/img/${photo.id}.jpg`
+  }
+
   @Query(_returns => Int)
   async totalPhotos() {
     return await Photo.count()

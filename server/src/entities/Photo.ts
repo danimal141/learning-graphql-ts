@@ -21,12 +21,12 @@ export default class Photo extends BaseEntity {
   public name: string
 
   @Column({ nullable: true })
-  @Field({ nullable: true })
-  public description?: string
+  @Field()
+  public url: string
 
   @Column({ nullable: true })
   @Field({ nullable: true })
-  public url?: string
+  public description?: string
 
   @Column()
   @Field()
