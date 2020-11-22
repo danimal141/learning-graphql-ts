@@ -24,6 +24,9 @@ export default class User extends BaseEntity {
   @Field()
   public readonly createdAt: Date
 
+  @Column()
+  public githubToken: string
+
   @OneToMany(_type => Photo, photo => photo.postedBy)
   @Field(_type => [Photo])
   postedPhotos: Photo[]

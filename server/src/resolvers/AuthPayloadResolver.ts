@@ -19,6 +19,7 @@ export default class AuthPayloadResolver {
     user.githubLogin = login
     user.name = name
     user.avatar = avatar_url
+    user.githubToken = access_token
     await user.save()
     return { user, token: access_token }
   }
