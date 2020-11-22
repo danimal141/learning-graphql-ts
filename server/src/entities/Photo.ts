@@ -1,6 +1,6 @@
 import {
   Entity, PrimaryGeneratedColumn, BaseEntity, Column, CreateDateColumn,
-  ManyToOne, ManyToMany
+  ManyToOne, ManyToMany, JoinColumn, Index
 } from 'typeorm'
 import { ObjectType, Field, ID } from 'type-graphql'
 import User from './User'
@@ -24,6 +24,9 @@ export default class Photo extends BaseEntity {
   @Field()
   public name: string
 
+  @Column()
+  public userId: string
+
   @Column({ nullable: true })
   @Field()
   public url: string
@@ -40,7 +43,9 @@ export default class Photo extends BaseEntity {
   @Field()
   public readonly createdAt: Date
 
+  @Index()
   @ManyToOne(_type => User, user => user.postedPhotos)
+  @JoinColumn({ name: 'userId' })
   @Field(_type => User)
   public postedBy: User
 

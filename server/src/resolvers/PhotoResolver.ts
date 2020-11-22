@@ -1,6 +1,7 @@
 import { Resolver, Query, Int, Arg, Ctx, Mutation, FieldResolver, Root } from 'type-graphql'
-import { Context } from 'apollo-server-core'
+import { AppContext } from '../index'
 import Photo from '../entities/Photo'
+import User from '../entities/User'
 import PostPhotoInput from './types/PostPhotoInput'
 
 @Resolver(Photo)
@@ -8,6 +9,11 @@ export default class PhotoResolver {
   @FieldResolver()
   url(@Root() photo: Photo): string {
     return `http://example.com/img/${photo.id}.jpg`
+  }
+
+  @FieldResolver()
+  async postedBy(@Root() photo: Photo): Promise<User> {
+    return await User.findOne({ githubLogin: photo.userId })
   }
 
   @Query(_returns => Int)
@@ -21,8 +27,11 @@ export default class PhotoResolver {
   }
 
   @Mutation(_returns => Photo)
-  async createPhoto(@Arg('photo') input: PostPhotoInput, @Ctx() _ctx: Context): Promise<Photo> {
+  async createPhoto(@Arg('photo') input: PostPhotoInput, @Ctx() ctx: AppContext): Promise<Photo> {
+    if (ctx.currentUser == null) { throw new Error('only an authorized use can post a photo!') }
     const photo = Photo.create(input)
+    photo.postedBy = ctx.currentUser
+    console.log(photo)
     return await photo.save()
   }
 }
