@@ -1,6 +1,7 @@
 import 'reflect-metadata'
 
 import { ApolloServer } from 'apollo-server-express'
+import { Context } from 'apollo-server-core'
 import expressPlayground from 'graphql-playground-middleware-express'
 import express from 'express'
 import { IncomingMessage } from 'http'
@@ -12,7 +13,7 @@ import dbSetup from './dbSetup'
 import resolvers from './resolvers'
 
 export type ContextRequest = { req: IncomingMessage }
-export interface AppContext {
+export interface AuthContext extends Context {
   currentUser: User | null
 }
 

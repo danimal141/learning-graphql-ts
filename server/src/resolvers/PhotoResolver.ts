@@ -1,5 +1,5 @@
 import { Resolver, Query, Int, Arg, Ctx, Mutation, FieldResolver, Root } from 'type-graphql'
-import { AppContext } from '../index'
+import { AuthContext } from '../index'
 import Photo from '../entities/Photo'
 import User from '../entities/User'
 import PostPhotoInput from './types/PostPhotoInput'
@@ -21,13 +21,14 @@ export default class PhotoResolver {
     return await Photo.count()
   }
 
+  // It may create a crazy query
   @Query(_returns => [Photo])
   async allPhotos(): Promise<Photo[]> {
     return await Photo.find()
   }
 
   @Mutation(_returns => Photo)
-  async createPhoto(@Arg('photo') input: PostPhotoInput, @Ctx() ctx: AppContext): Promise<Photo> {
+  async createPhoto(@Arg('photo') input: PostPhotoInput, @Ctx() ctx: AuthContext): Promise<Photo> {
     if (ctx.currentUser == null) { throw new Error('only an authorized use can post a photo!') }
     const photo = Photo.create(input)
     photo.postedBy = ctx.currentUser
