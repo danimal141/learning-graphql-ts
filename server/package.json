@@ -11,7 +11,9 @@
     "build": "tsc",
     "start": "ts-node src/index.ts",
     "lint": "eslint src/ -c '../.eslintrc.js' --ext .ts",
-    "lint:fix": "eslint src/ -c '../.eslintrc.js' --ext .ts --fix"
+    "lint:fix": "eslint src/ -c '../.eslintrc.js' --ext .ts --fix",
+    "migration:generate": "ts-node node_modules/.bin/typeorm migration:generate",
+    "migration:show": "ts-node node_modules/.bin/typeorm migration:show"
   },
   "dependencies": {
     "apollo-server-express": "^2.19.0",
