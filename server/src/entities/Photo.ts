@@ -1,55 +1,62 @@
 import {
-  Entity, PrimaryGeneratedColumn, BaseEntity, Column, CreateDateColumn,
-  ManyToOne, ManyToMany, JoinColumn, Index
-} from 'typeorm'
-import { ObjectType, Field, ID } from 'type-graphql'
-import User from './User'
+  Entity,
+  PrimaryGeneratedColumn,
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  ManyToOne,
+  ManyToMany,
+  JoinColumn,
+  Index,
+} from "typeorm";
+import { ObjectType, Field, ID } from "type-graphql";
+import User from "./User";
 
 export enum PhotoCategory {
-  Selfie = 'SELFIE',
-  Portrait = 'PORTRAIT',
-  Action = 'ACTION',
-  Landscape = 'LANDSCAPE',
-  Graphic = 'GRAPHIC'
+  Selfie = "SELFIE",
+  Portrait = "PORTRAIT",
+  Action = "ACTION",
+  Landscape = "LANDSCAPE",
+  Graphic = "GRAPHIC",
 }
 
 @Entity()
 @ObjectType()
 export default class Photo extends BaseEntity {
   @PrimaryGeneratedColumn()
-  @Field(_type => ID)
-  public readonly id: number
+  @Field((_type) => ID)
+  public readonly id: number;
 
   @Column()
   @Field()
-  public name: string
+  public name: string;
 
   @Column()
-  public userId: string
+  public userId: string;
 
   @Column({ nullable: true })
   @Field()
-  public url: string
+  public url: string;
 
   @Column({ nullable: true })
   @Field({ nullable: true })
-  public description?: string
+  public description?: string;
 
   @Column()
   @Field()
-  public category: PhotoCategory
+  public category: PhotoCategory;
 
-  @CreateDateColumn({ type: 'timestamp' })
+  @CreateDateColumn({ type: "timestamp" })
   @Field()
-  public readonly createdAt: Date
+  public readonly createdAt: Date;
 
   @Index()
-  @ManyToOne(_type => User, user => user.postedPhotos)
-  @JoinColumn({ name: 'userId' })
-  @Field(_type => User)
-  public postedBy: User
+  @ManyToOne((_type) => User, (user) => user.postedPhotos)
+  @JoinColumn({ name: "userId" })
+  @Field((_type) => User)
+  public postedBy: User;
 
-  @ManyToMany(_type => User, user => user.inPhotos)
-  @Field(_type => [User])
-  public taggedUsers: User[]
+  @ManyToMany((_type) => User, (user) => user.inPhotos)
+  @Field((_type) => [User])
+  public taggedUsers: User[];
 }

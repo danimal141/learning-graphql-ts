@@ -1,37 +1,42 @@
 import {
-  Entity, PrimaryColumn, BaseEntity, Column,
-  CreateDateColumn, OneToMany, ManyToMany
-} from 'typeorm'
-import { ObjectType, Field, ID } from 'type-graphql'
-import Photo from './Photo'
+  Entity,
+  PrimaryColumn,
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  OneToMany,
+  ManyToMany,
+} from "typeorm";
+import { ObjectType, Field, ID } from "type-graphql";
+import Photo from "./Photo";
 
 @Entity()
 @ObjectType()
 export default class User extends BaseEntity {
   @PrimaryColumn()
-  @Field(_type => ID)
-  public githubLogin: string
+  @Field((_type) => ID)
+  public githubLogin: string;
 
   @Column()
   @Field()
-  public name: string
+  public name: string;
 
   @Column()
   @Field()
-  public avatar: string
+  public avatar: string;
 
-  @CreateDateColumn({ type: 'timestamp' })
+  @CreateDateColumn({ type: "timestamp" })
   @Field()
-  public readonly createdAt: Date
+  public readonly createdAt: Date;
 
   @Column()
-  public githubToken: string
+  public githubToken: string;
 
-  @OneToMany(_type => Photo, photo => photo.postedBy)
-  @Field(_type => [Photo])
-  postedPhotos: Photo[]
+  @OneToMany((_type) => Photo, (photo) => photo.postedBy)
+  @Field((_type) => [Photo])
+  postedPhotos: Photo[];
 
-  @ManyToMany(_type => Photo, photo => photo.taggedUsers)
-  @Field(_type => [Photo])
-  inPhotos: Photo[]
+  @ManyToMany((_type) => Photo, (photo) => photo.taggedUsers)
+  @Field((_type) => [Photo])
+  inPhotos: Photo[];
 }

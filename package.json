@@ -36,7 +36,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,json,graphql,gql}": [
-      "yarn fmt"
+      "prettier --write"
     ]
   }
 }
