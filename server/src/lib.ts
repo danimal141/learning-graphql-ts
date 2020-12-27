@@ -33,14 +33,10 @@ export interface GitHubError {
 }
 
 const isError = (result: GitHubUserResponse | GitHubError): result is GitHubError => {
-  console.log('isError------------')
-  console.log(result)
   return (result as GitHubError).message != null
 }
 
 const isAuthError = (result: GitHubAuthResponse | GitHubAuthError): result is GitHubAuthError => {
-  console.log('isAuthError------------')
-  console.log(result)
   return (result as GitHubAuthError).error != null
 }
 
