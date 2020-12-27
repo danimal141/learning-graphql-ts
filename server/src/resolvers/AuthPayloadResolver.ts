@@ -3,7 +3,7 @@ import { Context } from 'apollo-server-core'
 import AuthPayload from '../entities/AuthPayload'
 import User from '../entities/User'
 
-import { authorizeWithGitHub } from '../lib'
+import { authorizeWithGitHub } from '../lib/github'
 
 @Resolver(AuthPayload)
 export default class AuthPayloadResolver {

@@ -9,7 +9,7 @@ import { buildSchema } from 'type-graphql'
 import path from 'path'
 
 import User from './entities/User'
-import dbSetup from './dbSetup'
+import dbSetup from './lib/dbSetup'
 import resolvers from './resolvers'
 
 export type ContextRequest = { req: IncomingMessage }
