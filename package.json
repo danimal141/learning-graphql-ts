@@ -11,10 +11,15 @@
     "lint": "run-p lint:server",
     "lint:fix": "run-p lint:fix:server",
     "lint:server": "yarn workspace server lint",
-    "lint:fix:server": "yarn workspace server lint:fix"
+    "lint:fix:server": "yarn workspace server lint:fix",
+    "fmt": "run-p fmt:server",
+    "fmt:server": "yarn workspace server prettier --write ."
   },
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.1"
   },
   "workspaces": [
     "server"
@@ -23,5 +28,15 @@
     "@typescript-eslint/eslint-plugin": "^4.7.0",
     "@typescript-eslint/parser": "^4.7.0",
     "eslint": "^7.13.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,json,graphql,gql}": [
+      "yarn fmt"
+    ]
   }
 }
