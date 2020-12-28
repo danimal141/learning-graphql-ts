@@ -24,7 +24,7 @@ $ yarn dev
 ```
 mutation {
   githubAuth(code: "xxx") {
-		token
+    token
     user {
       githubLogin
       name
