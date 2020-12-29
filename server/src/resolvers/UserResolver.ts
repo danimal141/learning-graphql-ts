@@ -1,7 +1,7 @@
 import { Resolver, Query, Mutation, Arg, Ctx, Int } from "type-graphql";
 import { AuthContext } from "../index";
 import User from "../entities/User";
-import { registerFakeUsers } from "../lib/registerFakerUsers"
+import { registerFakeUsers } from "../lib/registerFakerUsers";
 
 @Resolver(User)
 export default class UserResolver {
@@ -22,7 +22,7 @@ export default class UserResolver {
   }
 
   @Mutation((_returns) => [User])
-  async addFakeUsers(@Arg("count")count: number = 1): Promise<User[]> {
-    return registerFakeUsers(count)
+  async addFakeUsers(@Arg("count") count: number = 1): Promise<User[]> {
+    return registerFakeUsers(count);
   }
 }
