@@ -6,8 +6,9 @@
   "author": "danimal141 <hideaki.ishii1204@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "run-p dev:server",
+    "dev": "run-p dev:server dev:client",
     "dev:server": "yarn workspace server dev",
+    "dev:client": "yarn workspace client start",
     "lint": "run-p lint:server",
     "lint:fix": "run-p lint:fix:server",
     "lint:server": "yarn workspace server lint",
