@@ -1,9 +1,0 @@
-query {
-  allPhotos {
-    id
-    name
-    url
-    description
-    category
-  }
-}
