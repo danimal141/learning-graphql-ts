@@ -20,7 +20,7 @@ module.exports = {
     "space-infix-ops": "error",
     "no-multiple-empty-lines": [2, { max: 1 }],
     indent: ["error", 2],
-    semi: ["error", "never"],
-    quotes: ["error", "single"],
+    semi: ["error", "always"],
+    quotes: ["error", "double"],
   },
 };

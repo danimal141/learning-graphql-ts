@@ -1,0 +1,12 @@
+li {
+  list-style: none;
+}
+
+img {
+  vertical-align: middle;
+}
+
+span {
+  vertical-align: middle;
+  margin-left: 10px;
+}

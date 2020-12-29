@@ -4,13 +4,6 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.3.6",
-    "@graphql-codegen/cli": "^1.20.0",
-    "@graphql-codegen/typescript": "^1.19.0",
-    "@graphql-codegen/typescript-operations": "^1.17.13",
-    "@graphql-codegen/typescript-react-apollo": "^2.2.1",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
@@ -23,6 +16,15 @@
     "typescript": "^4.1.0",
     "web-vitals": "^0.2.4"
   },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.20.0",
+    "@graphql-codegen/typescript": "^1.19.0",
+    "@graphql-codegen/typescript-operations": "^1.17.13",
+    "@graphql-codegen/typescript-react-apollo": "^2.2.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -30,12 +32,6 @@
     "eject": "react-scripts eject",
     "codegen": "graphql-codegen --config codegen.yml",
     "codegen:watch": "graphql-codegen --config codegen.yml --watch"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [

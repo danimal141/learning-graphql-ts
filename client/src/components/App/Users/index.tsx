@@ -1,5 +1,5 @@
-import React from "react";
-import { User, UsersDocument, UsersQuery } from "../../../graphql/generated";
+import { useUsersQuery } from "../../../graphql/generated";
+import "./index.css";
 
 const Users = () => {
   const { data, error, loading } = useUsersQuery();
@@ -11,12 +11,16 @@ const Users = () => {
     return <p>{error}</p>;
   }
 
+  if (data?.allUsers == null) {
+    return null;
+  }
+
   return (
     <ul>
-      {data.allUsers.map((u: User) => (
+      {data.allUsers.map((u) => (
         <li key={u.name}>
-          <img src={u.avatar} />
-          <span>u.name</span>
+          <img width="50px" src={u.avatar} />
+          <span>{u.name}</span>
         </li>
       ))}
     </ul>

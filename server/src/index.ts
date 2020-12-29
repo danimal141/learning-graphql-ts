@@ -11,7 +11,9 @@ import path from "path";
 import dotenv from "dotenv";
 
 import User from "./entities/User";
-import resolvers from "./resolvers";
+import AuthPayloadResolver from "./resolvers/AuthPayloadResolver";
+import PhotoResolver from "./resolvers/PhotoResolver";
+import UserResolver from "./resolvers/UserResolver";
 
 export type ContextRequest = { req: IncomingMessage };
 export interface AuthContext extends Context {
@@ -25,7 +27,7 @@ dotenv.config({ path: path.join(__dirname, "../../server/.env") });
 
   const app = express();
   const schema = await buildSchema({
-    resolvers: resolvers,
+    resolvers: [AuthPayloadResolver, PhotoResolver, UserResolver],
     emitSchemaFile: path.resolve(__dirname, "../schema.gql"),
   });
   const context = async ({ req }: ContextRequest) => {
