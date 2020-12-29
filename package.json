@@ -22,11 +22,13 @@
     "prettier": "^2.2.1"
   },
   "workspaces": [
-    "server"
+    "server",
+    "client"
   ],
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.7.0",
     "@typescript-eslint/parser": "^4.7.0",
+    "create-react-app": "^4.0.1",
     "eslint": "^7.13.0"
   },
   "husky": {
@@ -35,7 +37,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,json,graphql,gql}": [
+    "*.{js,jsx,ts,tsx,json,graphql,gql}": [
       "prettier --write"
     ]
   }

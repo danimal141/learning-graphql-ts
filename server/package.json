@@ -26,8 +26,7 @@
     "mysql": "^2.14.1",
     "reflect-metadata": "^0.1.10",
     "type-graphql": "^1.1.1",
-    "typeorm": "0.2.29",
-    "ulid": "^2.3.0"
+    "typeorm": "0.2.29"
   },
   "devDependencies": {
     "@types/node": "^8.0.29",
