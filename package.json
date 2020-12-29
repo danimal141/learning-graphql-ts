@@ -13,8 +13,7 @@
     "lint:fix": "run-p lint:fix:server",
     "lint:server": "yarn workspace server lint",
     "lint:fix:server": "yarn workspace server lint:fix",
-    "fmt": "run-p fmt:server",
-    "fmt:server": "yarn workspace server prettier --write ."
+    "fmt": "prettier --write ."
   },
   "devDependencies": {
     "husky": "^4.3.6",

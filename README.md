@@ -5,6 +5,7 @@ This project builds a sample GraphQL application to learn [this book](https://ww
 Different from [the original](https://github.com/MoonHighway/learning-graphql), this project uses TypeScript, MySQL, typeorm and type-graphql.
 
 ## How to develop
+
 ```
 // setup
 $ yarn
@@ -16,6 +17,7 @@ $ yarn dev
 ```
 
 ## How to get a GitHub Token
+
 - Create an OAuth app [here](https://github.com/settings/developers).
 - Access: http://github.com/login/authorize?client_id=xxx&scope=user
   - Then you would redirect to `http://localhost:4000?code=xxx`
