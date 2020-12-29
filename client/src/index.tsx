@@ -1,13 +1,19 @@
+import { ApolloProvider } from "@apollo/client";
+import { useApollo } from "./lib/apolloClient";
+
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 
+const initialState = {};
+const apolloClient = useApollo(initialState);
+
 ReactDOM.render(
-  <React.StrictMode>
+  <ApolloProvider client={apolloClient}>
     <App />
-  </React.StrictMode>,
+  </ApolloProvider>,
   document.getElementById("root")
 );
 
