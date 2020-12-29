@@ -14,6 +14,7 @@ The javascript `Date` as string. Type represents date and time as the ISO Date s
 scalar DateTime
 
 type Mutation {
+  addFakeUsers(count: Float!): [User!]!
   createPhoto(photo: PostPhotoInput!): Photo!
   githubAuth(code: String!): AuthPayload!
 }
