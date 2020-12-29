@@ -37,8 +37,10 @@ input PostPhotoInput {
 
 type Query {
   allPhotos: [Photo!]!
+  allUsers: [User!]!
   me: User
   totalPhotos: Int!
+  totalUsers: Int!
 }
 
 type User {
