@@ -11,14 +11,7 @@ import {
 } from "typeorm";
 import { ObjectType, Field, ID } from "type-graphql";
 import User from "./User";
-
-export enum PhotoCategory {
-  Selfie = "SELFIE",
-  Portrait = "PORTRAIT",
-  Action = "ACTION",
-  Landscape = "LANDSCAPE",
-  Graphic = "GRAPHIC",
-}
+import { PhotoCategory } from "./PhotoCategory"
 
 @Entity()
 @ObjectType()
@@ -43,7 +36,7 @@ export default class Photo extends BaseEntity {
   public description?: string;
 
   @Column()
-  @Field()
+  @Field((_type) => PhotoCategory)
   public category: PhotoCategory;
 
   @CreateDateColumn({ type: "timestamp" })

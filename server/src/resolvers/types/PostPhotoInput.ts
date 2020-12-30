@@ -1,5 +1,5 @@
 import { InputType, Field } from "type-graphql";
-import { PhotoCategory } from "../../entities/Photo";
+import { PhotoCategory } from "../../entities/PhotoCategory";
 
 @InputType()
 export default class PostPhotoInput {

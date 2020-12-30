@@ -20,7 +20,7 @@ type Mutation {
 }
 
 type Photo {
-  category: String!
+  category: PhotoCategory!
   createdAt: DateTime!
   description: String
   id: ID!
@@ -28,6 +28,14 @@ type Photo {
   postedBy: User!
   taggedUsers: [User!]!
   url: String!
+}
+
+enum PhotoCategory {
+  Action
+  Graphic
+  Landscape
+  Portrait
+  Selfie
 }
 
 input PostPhotoInput {
