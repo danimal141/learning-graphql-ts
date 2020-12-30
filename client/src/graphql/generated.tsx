@@ -89,11 +89,6 @@ export type User = {
   postedPhotos: Array<Photo>;
 };
 
-export type UserInfoFragment = { __typename?: "User" } & Pick<
-  User,
-  "githubLogin" | "name" | "avatar"
->;
-
 export type LoginMutationVariables = Exact<{
   code: Scalars["String"];
 }>;
@@ -101,6 +96,11 @@ export type LoginMutationVariables = Exact<{
 export type LoginMutation = { __typename?: "Mutation" } & {
   githubAuth: { __typename?: "AuthPayload" } & Pick<AuthPayload, "token">;
 };
+
+export type UserInfoFragment = { __typename?: "User" } & Pick<
+  User,
+  "githubLogin" | "name" | "avatar"
+>;
 
 export type UsersQueryVariables = Exact<{ [key: string]: never }>;
 

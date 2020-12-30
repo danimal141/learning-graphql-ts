@@ -1,12 +1,12 @@
 import { FetchResult } from "@apollo/client";
 import { useState, useEffect } from "react";
-import { initializeApollo } from "../../../../lib/apolloClient";
+import { initializeApollo } from "../../lib/apolloClient";
 import {
-  useUsersQuery,
   UsersDocument,
+  UserInfoFragment,
   LoginDocument,
   LoginMutation,
-} from "../../../../graphql/generated";
+} from "../../graphql/generated";
 import { useMutation } from "@apollo/client";
 import { useHistory } from "react-router-dom";
 
@@ -25,24 +25,15 @@ const CurrentUser = ({ name, avatar, logout }: CurrentUserProps) => (
 );
 
 export interface MeProps {
+  me: UserInfoFragment | null | undefined;
   logout: () => void;
   requestCode: () => void;
   isSignIn: boolean;
 }
 
-const Me = ({ logout, requestCode, isSignIn }: MeProps) => {
-  const { data, error, loading } = useUsersQuery();
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
-
-  if (data?.me != null) {
-    return <CurrentUser {...data.me} logout={logout} />;
+const Me = ({ me, logout, requestCode, isSignIn }: MeProps) => {
+  if (me != null) {
+    return <CurrentUser {...me} logout={logout} />;
   }
 
   return (
@@ -52,7 +43,11 @@ const Me = ({ logout, requestCode, isSignIn }: MeProps) => {
   );
 };
 
-const AuthorizedUser = () => {
+export interface AuthorizedUserProps {
+  me: UserInfoFragment | null | undefined;
+}
+
+const AuthorizedUser = ({ me }: AuthorizedUserProps) => {
   const [githubCode, setGitHubCode] = useState("");
   const [isSignIn, setIsSignIn] = useState(false);
 
@@ -103,7 +98,9 @@ const AuthorizedUser = () => {
     }
   }, [githubCode]);
 
-  return <Me isSignIn={isSignIn} requestCode={requestCode} logout={logout} />;
+  return (
+    <Me me={me} isSignIn={isSignIn} requestCode={requestCode} logout={logout} />
+  );
 };
 
 export default AuthorizedUser;
