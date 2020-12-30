@@ -11,7 +11,7 @@ import {
 } from "typeorm";
 import { ObjectType, Field, ID } from "type-graphql";
 import User from "./User";
-import { PhotoCategory } from "./PhotoCategory"
+import { PhotoCategory } from "./PhotoCategory";
 
 @Entity()
 @ObjectType()
