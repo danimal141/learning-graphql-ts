@@ -12,7 +12,8 @@ $ yarn
 $ docker-compose up
 
 // run all
-// Then you can open `http://localhost:4000/playground` and `server/schema.gql` would be automatically generated
+// Server: you can open `http://localhost:4000/playground` and `server/schema.gql` would be automatically generated / updated
+// Client: you can open `http://localhost:3000` and `client/graphql/generated.tsx` would be automatically generated / updated
 $ yarn dev
 ```
 
