@@ -9,6 +9,8 @@ import { authorizeWithGitHub } from "../lib/github";
 export default class AuthPayloadResolver {
   @Mutation((_returns) => AuthPayload)
   // Can get a valid `code` via GET: https://github.com/login/oauth/authorize?client_id=${client_id}&scope=user
+  // The OAuth app should be set as redirecting to `http://localhost:3000/?code=xxx` for the client side
+  // Check `Authorization callback URL` on the setting page
   async githubAuth(
     @Arg("code") code: string,
     @Ctx() _ctx: Context

@@ -1,0 +1,5 @@
+mutation Login($code: String!) {
+  githubAuth(code: $code) {
+    token
+  }
+}

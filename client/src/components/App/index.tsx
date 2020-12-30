@@ -1,8 +1,9 @@
+import React from "react";
 import { ApolloProvider } from "@apollo/client";
 import { useApollo } from "../../lib/apolloClient";
-
-import React from "react";
 import Users from "./Users";
+import AuthorizedUser from "./Users/AuthorizedUser";
+import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
   const initialState = {};
@@ -10,7 +11,11 @@ const App = () => {
 
   return (
     <ApolloProvider client={apolloClient}>
-      <Users />
+      <BrowserRouter>
+        <AuthorizedUser />
+        <hr />
+        <Users />
+      </BrowserRouter>
     </ApolloProvider>
   );
 };

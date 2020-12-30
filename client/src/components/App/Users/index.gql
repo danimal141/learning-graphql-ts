@@ -1,6 +1,5 @@
-query Users {
-  allUsers {
-    name
-    avatar
-  }
+fragment UserInfo on User {
+  githubLogin
+  name
+  avatar
 }

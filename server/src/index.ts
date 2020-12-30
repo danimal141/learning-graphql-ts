@@ -20,7 +20,7 @@ export interface AuthContext extends Context {
   currentUser: User | null;
 }
 
-dotenv.config({ path: path.join(__dirname, "../../server/.env") });
+dotenv.config({ path: path.join(__dirname, "../.env") });
 
 (async () => {
   await createConnection(await getConnectionOptions());

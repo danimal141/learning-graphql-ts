@@ -1,5 +1,6 @@
-import { useUsersQuery } from "../../../graphql/generated";
 import "./index.css";
+
+import { useUsersQuery } from "../../../graphql/generated";
 
 const Users = () => {
   const { data, error, loading } = useUsersQuery();
@@ -16,14 +17,17 @@ const Users = () => {
   }
 
   return (
-    <ul>
-      {data.allUsers.map((u) => (
-        <li key={u.name}>
-          <img width="50px" src={u.avatar} />
-          <span>{u.name}</span>
-        </li>
-      ))}
-    </ul>
+    <>
+      <h2>Existent user List</h2>
+      <ul>
+        {data.allUsers?.map((u) => (
+          <li key={u.githubLogin}>
+            <img width="50px" src={u.avatar} />
+            <span>{u.name}</span>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 

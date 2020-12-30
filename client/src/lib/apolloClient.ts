@@ -1,22 +1,29 @@
 import { useMemo } from "react";
 import { ApolloClient, ApolloLink, InMemoryCache } from "@apollo/client";
 import { createHttpLink } from "apollo-link-http";
-import { from } from "apollo-link";
+import { setContext } from "@apollo/client/link/context";
 import { mergeDeep } from "@apollo/client/utilities";
 
 type CacheState = Record<string, any> | null;
 
 const cache = new InMemoryCache();
 
-const link = from([
-  createHttpLink({
-    uri: "http://localhost:4000/graphql",
-  }),
-]);
+const authLink = setContext((_, { headers }) => {
+  return {
+    headers: {
+      ...headers,
+      authorization: localStorage.getItem("token"),
+    },
+  };
+});
+
+const link: unknown = createHttpLink({
+  uri: "http://localhost:4000/graphql",
+});
 
 function createApolloClient() {
   return new ApolloClient({
-    link: (link as unknown) as ApolloLink,
+    link: authLink.concat(link as ApolloLink),
     cache: cache,
     defaultOptions: {
       watchQuery: {

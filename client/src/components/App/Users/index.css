@@ -1,5 +1,12 @@
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
 li {
   list-style: none;
+  margin-top: 10px;
 }
 
 img {
