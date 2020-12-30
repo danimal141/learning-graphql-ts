@@ -1,7 +1,8 @@
 import { Resolver, Query, Mutation, Arg, Ctx, Int } from "type-graphql";
 import { AuthContext } from "../index";
 import User from "../entities/User";
-import { registerFakeUsers } from "../lib/registerFakerUsers";
+import { buildFakeUsers } from "../lib/buildFakerUsers";
+import { getManager } from "typeorm";
 
 @Resolver(User)
 export default class UserResolver {
@@ -23,6 +24,18 @@ export default class UserResolver {
 
   @Mutation((_returns) => [User])
   async addFakeUsers(@Arg("count") count: number = 1): Promise<User[]> {
-    return registerFakeUsers(count);
+    const resp = await buildFakeUsers(count);
+    const users = resp.map((res) => {
+      const u = new User();
+      u.githubLogin = res.login.username;
+      u.name = `${res.name.first} ${res.name.last}`;
+      u.avatar = res.picture.thumbnail;
+      u.githubToken = res.login.sha1;
+      return u;
+    });
+    await getManager().transaction(async (transactionalEntityManager) => {
+      await transactionalEntityManager.save(users);
+    });
+    return users;
   }
 }
