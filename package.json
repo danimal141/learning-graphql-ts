@@ -38,7 +38,7 @@
     }
   },
   "lint-staged": {
-    "./{client,server}/src/**/*.{js,jsx,ts,tsx,css,html,json,graphql,gql}": [
+    "./{client,server}/src/**/*.{js,ts,tsx,css,html,json,graphql,gql}": [
       "prettier --write"
     ]
   }
